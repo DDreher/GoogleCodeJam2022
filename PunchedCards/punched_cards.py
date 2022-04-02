@@ -1,13 +1,13 @@
 from collections.abc import Iterable
 
+
+# Solution
 def parse_test_case(s):
     tokens = s.split()
     r = int(tokens[0])
     c = int(tokens[1])
     return {"rows": r, "cols": c}
 
-
-# Solution
 def solve(data):
     rows = data["rows"]
     cols = data["cols"]
@@ -81,8 +81,8 @@ def main():
 
     # For testing
     # import os
-    # from io import StringIO
     # raw_input_string = "".join(open(f'{os.path.dirname(os.path.realpath(__file__))}/sample_input.txt', 'r').readlines())
+    # from io import StringIO
     # wrapped_string = StringIO(raw_input_string)
 
     input_reader = InputReader(parse_test_case, wrapped_string)
@@ -91,5 +91,5 @@ def main():
         print(solve(data))
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
