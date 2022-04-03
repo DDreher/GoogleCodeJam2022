@@ -8,6 +8,7 @@ def parse_test_case(s):
     c = int(tokens[1])
     return {"rows": r, "cols": c}
 
+
 def solve(data):
     rows = data["rows"]
     cols = data["cols"]
@@ -58,16 +59,16 @@ class InputReader(Iterable):
 
     def __init__(self, read_func, input_string=None):
         if input_string:
-            self._read_input_string_file(read_func, input_string)
+            self.read_input_string_from_file(read_func, input_string)
         else:
-            self._read_input_string_std(read_func)
+            self.read_input_string_from_stdin(read_func)
 
-    def _read_input_string_file(self, read_func, input_string):
+    def read_input_string_from_file(self, read_func, input_string):
         num_test_cases = int(next(input_string))
         self.test_case_data = [read_func(next(input_string)) for _ in range(num_test_cases)]
         assert len(self.test_case_data) == num_test_cases
 
-    def _read_input_string_std(self, read_func):
+    def read_input_string_from_stdin(self, read_func):
         num_test_cases = int(input())
         self.test_case_data = [read_func(input()) for _ in range(num_test_cases)]
         assert len(self.test_case_data) == num_test_cases
@@ -79,7 +80,7 @@ class InputReader(Iterable):
 def main():
     wrapped_string = None
 
-    # For testing
+    # For testing - Uncomment to read from file
     # import os
     # raw_input_string = "".join(open(f'{os.path.dirname(os.path.realpath(__file__))}/sample_input.txt', 'r').readlines())
     # from io import StringIO
